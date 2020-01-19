@@ -10,3 +10,27 @@ mongoose.connect('mongodb://localhost/recipeApp', { useNewUrlParser: true })
     console.error('Error connecting to mongo', err);
   });
 
+let albondigas = {
+  title: 'Albondigas',
+  cuisine: 'Spanish',
+  level: 'Amateur Chef',
+  ingredients: ['minced beef', 'petruska', 'onion', 'carrot', 'flour', 'egg', 'milk', 'bread', 'white wine', 'tomato sauce', 'garlic'],
+  dishType: 'Dish',
+  image: 'https://vod-hogarmania.atresmedia.com/hogarmania/images/images01/2013/06/14/5bf566dc23430100010f45fe/1239x697.jpg',
+  duration: 110,
+  creator: 'Karlos Arguiñano',
+  created: '1998-05-24'
+};
+
+Recipe.create(albondigas)
+  .then(() => {
+    console.log(albondigas.title);
+    Recipe.insertMany(data)
+    .then(result => {
+      result.forEach((recipe) => {
+        console.log(recipe.title);
+        Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
+      })
+    })
+  })
+  
