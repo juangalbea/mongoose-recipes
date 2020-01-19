@@ -29,7 +29,16 @@ Recipe.create(albondigas)
     .then(result => {
       result.forEach((recipe) => {
         console.log(recipe.title);
-        Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
+      });
+      Recipe.updateOne({title:'Rigatoni alla Genovese'}, {duration: 100})
+      .then(() => {
+        console.log("recipe updated successfully");
+        Recipe.deleteOne({title: 'Carrot Cake'})
+        .then(() => {
+          console.log('Deleted successfully');
+          mongoose.connection.close()
+          .then(() => console.log('connection closed successful'));
+        })
       })
     })
   })
